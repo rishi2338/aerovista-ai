@@ -1,0 +1,1968 @@
+
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap");
+
+/* =========================================================
+   AIRSCOPE — ENVIRONMENTAL INTELLIGENCE DESIGN SYSTEM
+   ========================================================= */
+
+:root {
+  color-scheme: dark;
+  --bg: #07110f;
+  --card: rgba(15, 29, 26, 0.94);
+  --card-strong: #172a25;
+  --line: rgba(163, 190, 174, 0.16);
+  --line-strong: rgba(183, 239, 114, 0.42);
+  --text: #f1f5eb;
+  --muted: #b0c0b4;
+  --soft: #7f9688;
+  --sky: #b7ef72;
+  --mint: #7de0b4;
+  --radius: 14px;
+  --shadow: 0 16px 44px rgba(0, 0, 0, 0.2);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+[data-testid="stAppViewContainer"] {
+  background:
+    radial-gradient(
+      ellipse at 82% -12%,
+      rgba(103, 160, 88, 0.15),
+      transparent 38rem
+    ),
+    radial-gradient(
+      ellipse at -10% 32%,
+      rgba(46, 123, 105, 0.12),
+      transparent 34rem
+    ),
+    var(--bg) !important;
+  color: var(--text) !important;
+  font-family: "DM Sans", system-ui, sans-serif;
+}
+
+[data-testid="stHeader"] {
+  background: rgba(7, 17, 15, 0.88) !important;
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--line);
+}
+
+[data-testid="stToolbar"] {
+  right: 1rem;
+}
+
+#MainMenu,
+footer {
+  visibility: hidden;
+}
+
+.block-container {
+  max-width: 1720px !important;
+  padding: 4rem clamp(1rem, 3.2vw, 3.6rem) 3rem !important;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Space Grotesk", "DM Sans", sans-serif !important;
+  letter-spacing: -0.045em !important;
+}
+
+h1 {
+  font-size: clamp(2rem, 4vw, 4rem) !important;
+  line-height: 1.04 !important;
+}
+
+h2 {
+  font-size: clamp(1.4rem, 2.4vw, 2.15rem) !important;
+}
+
+h3 {
+  font-size: 1.12rem !important;
+}
+
+p,
+li,
+label {
+  line-height: 1.6;
+}
+
+[data-testid="stCaptionContainer"] {
+  color: var(--muted) !important;
+}
+
+/* =========================================================
+   SIDEBAR AND NAVIGATION
+   ========================================================= */
+
+[data-testid="stSidebar"] {
+  background: linear-gradient(180deg, #0b1a14 0%, #07110d 100%);
+  border-right: 1px solid var(--line);
+}
+
+[data-testid="stSidebar"] .block-container {
+  padding: 1.25rem 1rem !important;
+}
+
+[data-testid="stSidebar"] [data-testid="stVerticalBlock"] {
+  gap: 0.7rem;
+}
+
+[data-testid="stSidebar"] [data-testid="stPageLink"] a {
+  border: 1px solid transparent;
+  border-radius: 9px;
+  padding: 0.65rem 0.75rem;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+[data-testid="stSidebar"] [data-testid="stPageLink"] a:hover {
+  background: rgba(183, 239, 114, 0.06);
+  border-color: rgba(183, 239, 114, 0.16);
+  transform: translateX(2px);
+}
+
+[data-testid="stSidebar"] [data-testid="stPageLink"] a[aria-current="page"] {
+  background: rgba(183, 239, 114, 0.1);
+  border-color: rgba(183, 239, 114, 0.2);
+  border-left: 3px solid var(--sky);
+  color: #e9ffd1;
+}
+
+[data-testid="stSidebar"] hr {
+  border-color: var(--line);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0.3rem 0.2rem 1.1rem;
+}
+
+.brand-mark {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  border: 1px solid var(--sky);
+  border-radius: 9px;
+  background: var(--sky);
+  color: #07110f;
+  font: 700 22px "Space Grotesk", sans-serif;
+  box-shadow: 0 0 26px rgba(183, 239, 114, 0.12);
+}
+
+.brand-name {
+  color: var(--text);
+  font: 700 1.35rem "Space Grotesk", sans-serif;
+  letter-spacing: -0.06em;
+}
+
+.brand-sub {
+  color: var(--muted);
+  font-size: 0.67rem;
+  margin-top: 2px;
+}
+
+.nav-label {
+  margin: 0.7rem 0 0.2rem;
+  color: var(--soft);
+  font-size: 0.63rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+}
+
+.side-status {
+  padding: 0.85rem;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--card);
+}
+
+.side-status b {
+  font-size: 0.78rem;
+}
+
+.side-status small {
+  display: block;
+  margin-top: 0.3rem;
+  color: var(--muted);
+  font-size: 0.68rem;
+}
+
+.status-dot,
+.live-indicator {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--sky);
+  box-shadow: 0 0 0 4px rgba(183, 239, 114, 0.1);
+}
+
+.status-dot {
+  margin-right: 6px;
+}
+
+/* =========================================================
+   HERO — CINEMATIC ENVIRONMENTAL OBSERVATORY
+   Supports both .hero and .observatory-hero.
+   ========================================================= */
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  perspective: 900px;
+  padding: 0 0 1.6rem;
+  margin: 0 0 1.1rem;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+}
+
+.hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+.hero h1 {
+  max-width: 900px;
+  margin: 0 0 0.55rem !important;
+  font-weight: 700 !important;
+}
+
+.hero .lead {
+  max-width: 780px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.75;
+}
+
+.eyebrow {
+  margin-bottom: 0.5rem;
+  color: var(--sky);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 0.9rem;
+}
+
+.tag {
+  padding: 0.3rem 0.65rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(14, 25, 21, 0.78);
+  color: var(--muted);
+  font-size: 0.66rem;
+}
+
+.tag strong {
+  color: var(--sky);
+  font-weight: 600;
+}
+
+/* 3D globe effect for the conventional hero */
+
+.hero::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: 50%;
+  right: clamp(8px, 4vw, 56px);
+  width: clamp(130px, 17vw, 220px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translateY(-50%) rotateX(-12deg);
+  background:
+    radial-gradient(
+      ellipse at 31% 25%,
+      rgba(190, 255, 242, 0.95),
+      rgba(69, 231, 211, 0.7) 8%,
+      transparent 26%
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 17px,
+      rgba(107, 245, 224, 0.2) 18px 19px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 21px,
+      rgba(107, 245, 224, 0.18) 22px 23px
+    ),
+    radial-gradient(
+      circle at 36% 34%,
+      #167e8a 0,
+      #0b4b66 43%,
+      #061b36 72%,
+      #020913 100%
+    );
+  box-shadow:
+    inset -24px -16px 34px rgba(0, 0, 0, 0.68),
+    inset 10px 8px 24px rgba(173, 255, 239, 0.2),
+    0 0 28px rgba(46, 226, 210, 0.22),
+    0 0 72px rgba(32, 167, 210, 0.12);
+  animation: as-globe-float 7s ease-in-out infinite;
+  -webkit-mask-image: radial-gradient(circle, #000 65%, transparent 73%);
+  mask-image: radial-gradient(circle, #000 65%, transparent 73%);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: 50%;
+  right: clamp(-14px, 2.3vw, 35px);
+  width: clamp(160px, 21vw, 270px);
+  aspect-ratio: 1;
+  border: 1px solid rgba(79, 235, 220, 0.42);
+  border-radius: 50%;
+  pointer-events: none;
+  background: transparent;
+  box-shadow: 0 0 22px rgba(38, 224, 210, 0.08);
+  transform: translateY(-50%) rotateX(67deg) rotateZ(-20deg);
+  animation: as-orbit 20s linear infinite;
+}
+
+/* Observatory hero used by the redesigned layout */
+
+.observatory-hero {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(250px, 0.8fr);
+  min-height: 320px;
+  margin: 1.25rem 0 1rem;
+  overflow: hidden;
+  border: 1px solid #345541;
+  border-radius: 8px;
+  background: #10271e;
+  animation: as-rise-in 0.8s cubic-bezier(0.2, 0.75, 0.25, 1) both;
+}
+
+.observatory-copy {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(1.4rem, 3.2vw, 3.3rem);
+}
+
+.observatory-copy::after {
+  content: "";
+  position: absolute;
+  right: -100px;
+  bottom: -190px;
+  width: 300px;
+  height: 300px;
+  border: 1px solid rgba(183, 239, 114, 0.15);
+  border-radius: 50%;
+  pointer-events: none;
+  box-shadow:
+    0 0 0 35px rgba(183, 239, 114, 0.025),
+    0 0 0 70px rgba(183, 239, 114, 0.02);
+}
+
+.observatory-kicker {
+  color: var(--sky);
+  font-size: 0.67rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+}
+
+.observatory-sep {
+  margin: 0 0.6rem;
+  color: var(--soft);
+}
+
+.observatory-mainline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: clamp(1rem, 3vw, 2.7rem);
+  margin: 1.1rem 0 0.8rem;
+}
+
+.observatory-score {
+  font: 600 clamp(5rem, 10vw, 9.4rem)/0.88 "Space Grotesk", sans-serif;
+  letter-spacing: -0.1em;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 34px rgba(183, 239, 114, 0.12);
+}
+
+.observatory-score-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.55rem;
+}
+
+.observatory-unit {
+  color: #dce8d9;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.observatory-muted {
+  color: var(--soft);
+}
+
+.observatory-delta {
+  color: var(--muted);
+  font-size: 0.83rem;
+}
+
+.observatory-advice {
+  max-width: 580px;
+  margin: 0.8rem 0 1.15rem;
+  color: #cfdbcf;
+  font-size: 0.91rem;
+  line-height: 1.6;
+}
+
+.observatory-scale {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 4px;
+  margin-top: 1.2rem;
+}
+
+.observatory-scale span {
+  height: 5px;
+  border-radius: 2px;
+}
+
+.observatory-scale-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.4rem;
+  color: var(--soft);
+  font-size: 0.67rem;
+}
+
+.observatory-outlook {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(1.4rem, 2.5vw, 2.5rem);
+  background: var(--sky);
+  color: #10251a;
+}
+
+.observatory-outlook .observatory-kicker {
+  color: #385b2b;
+}
+
+.outlook-date {
+  margin-top: 1.25rem;
+  font: 500 1.7rem "Space Grotesk", sans-serif;
+  letter-spacing: -0.04em;
+}
+
+.observatory-next {
+  margin-top: 0.3rem;
+  font: 600 clamp(3.8rem, 6vw, 5.8rem)/1 "Space Grotesk", sans-serif;
+  letter-spacing: -0.08em;
+}
+
+.observatory-next span {
+  font-size: 0.9rem;
+  letter-spacing: 0;
+}
+
+.outlook-status {
+  color: #294c29;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.outlook-change {
+  margin-top: 1.4rem;
+  font: 700 1.05rem "Space Grotesk", sans-serif;
+}
+
+.outlook-change span {
+  font: 400 0.75rem "DM Sans", sans-serif;
+}
+
+.outlook-foot {
+  margin-top: 1.4rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid rgba(16, 37, 26, 0.22);
+  color: #385b2b;
+  font-size: 0.7rem;
+  line-height: 1.6;
+}
+
+/* =========================================================
+   CONTEXT AND SECTION HEADINGS
+   ========================================================= */
+
+.context-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem 1.5rem;
+  margin: 0.5rem 0 0.8rem;
+  color: var(--muted);
+  font-size: 0.7rem;
+}
+
+.section-label {
+  margin: 0.5rem 0 0.8rem;
+  color: var(--muted);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.observatory-section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 2.8rem 0 1rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid #244238;
+  animation: as-rise-in 0.7s ease both;
+}
+
+.observatory-section-head > div {
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
+}
+
+.observatory-section-head h2 {
+  margin: 0 !important;
+}
+
+.section-index {
+  color: var(--sky);
+  font: 600 0.72rem "Space Grotesk", sans-serif;
+  letter-spacing: 0.08em;
+}
+
+.section-aside {
+  color: var(--soft);
+  font-size: 0.6rem;
+  letter-spacing: 0.13em;
+  text-align: right;
+}
+
+/* =========================================================
+   KPI CARDS
+   ========================================================= */
+
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin: 0.6rem 0 1.1rem;
+}
+
+.kpi {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  padding: 1.2rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: 15px;
+  background: linear-gradient(
+    145deg,
+    rgba(23, 42, 35, 0.98),
+    rgba(12, 24, 21, 0.98)
+  );
+  box-shadow: var(--shadow);
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+  animation: as-rise-in 0.55s ease both;
+}
+
+.kpi::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 12%;
+  width: 76%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(183, 239, 114, 0.68),
+    transparent
+  );
+}
+
+.kpi-label {
+  color: var(--muted);
+  font-size: 0.73rem;
+  letter-spacing: 0.035em;
+}
+
+.kpi-value {
+  margin: 0.45rem 0 0.25rem;
+  color: var(--text);
+  font: 600 clamp(1.35rem, 2.3vw, 2rem) "Space Grotesk", sans-serif;
+  letter-spacing: -0.055em;
+  overflow-wrap: anywhere;
+}
+
+.kpi-sub {
+  color: var(--soft);
+  font-size: 0.69rem;
+}
+
+.kpi:hover {
+  transform: translateY(-4px);
+  border-color: var(--line-strong);
+  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.28);
+}
+
+.kpi:nth-child(2) {
+  animation-delay: 50ms;
+}
+
+.kpi:nth-child(3) {
+  animation-delay: 100ms;
+}
+
+.kpi:nth-child(4) {
+  animation-delay: 150ms;
+}
+
+/* Horizontal KPI data rail */
+
+.signal-strip {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0 0 3.4rem;
+  overflow: hidden;
+  border: 1px solid #244238;
+  background: #0b1e18;
+  animation: as-rise-in 0.75s 0.1s ease both;
+}
+
+.signal-item {
+  min-width: 0;
+  padding: 1.15rem 1.4rem 1.25rem;
+  border-right: 1px solid #244238;
+  transition: background 0.25s ease;
+}
+
+.signal-item:last-child {
+  border-right: 0;
+}
+
+.signal-item:hover {
+  background: rgba(183, 239, 114, 0.045);
+}
+
+.signal-label {
+  display: block;
+  margin-bottom: 0.65rem;
+  color: var(--soft);
+  font-size: 0.61rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+}
+
+.signal-item strong {
+  display: block;
+  font: 600 clamp(1.4rem, 2.4vw, 2rem)/1.15 "Space Grotesk", sans-serif;
+  letter-spacing: -0.05em;
+  overflow-wrap: anywhere;
+}
+
+.signal-item small {
+  display: block;
+  margin-top: 0.45rem;
+  color: var(--muted);
+  font-size: 0.72rem;
+  line-height: 1.4;
+}
+
+.signal-total {
+  color: var(--soft);
+  font-size: 0.9rem;
+}
+
+/* =========================================================
+   AIR QUALITY SUMMARY
+   ========================================================= */
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 14px;
+  margin: 0.75rem 0 1.2rem;
+}
+
+.aqi-panel,
+.outlook-panel {
+  min-width: 0;
+  padding: 1.4rem;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: linear-gradient(
+    145deg,
+    rgba(18, 35, 29, 0.98),
+    rgba(10, 20, 17, 0.98)
+  );
+  box-shadow: var(--shadow);
+}
+
+.aqi-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+.aqi-reading {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0.9rem 0;
+}
+
+.aqi-number {
+  color: var(--text);
+  font: 600 3.6rem/1 "Space Grotesk", sans-serif;
+  letter-spacing: -0.06em;
+  text-shadow: 0 0 36px rgba(183, 239, 114, 0.12);
+}
+
+.aqi-unit {
+  margin-left: 0.4rem;
+  color: var(--muted);
+  font-size: 0.7rem;
+}
+
+.aqi-badge {
+  display: inline-block;
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
+  color: #07110f;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.aqi-note {
+  margin-top: 0.5rem;
+  color: var(--muted);
+  font-size: 0.75rem;
+  line-height: 1.65;
+}
+
+.aqi-scale {
+  display: flex;
+  gap: 3px;
+  height: 5px;
+  margin-top: 0.8rem;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.aqi-scale span {
+  flex: 1;
+}
+
+.scale-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.3rem;
+  color: var(--soft);
+  font-size: 0.6rem;
+}
+
+.outlook-panel h3 {
+  margin: 0.7rem 0 !important;
+  font-size: 1.15rem !important;
+}
+
+.outlook-value {
+  font: 600 2rem "Space Grotesk", sans-serif;
+}
+
+.outlook-detail {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0.8rem 0;
+  color: var(--muted);
+  font-size: 0.73rem;
+}
+
+.outlook-detail b {
+  color: var(--text);
+}
+
+/* =========================================================
+   POLLUTANT CARDS AND SPARKLINES
+   ========================================================= */
+
+.pollutant-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 1rem;
+}
+
+.pollutant {
+  min-width: 0;
+  overflow: hidden;
+  padding: 1rem 1rem 0.85rem;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  background: linear-gradient(
+    150deg,
+    rgba(21, 39, 32, 0.98),
+    rgba(10, 20, 17, 0.98)
+  );
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+  animation: as-rise-in 0.55s ease both;
+}
+
+.pollutant:hover {
+  transform: translateY(-4px);
+  border-color: var(--line-strong);
+  box-shadow: var(--shadow);
+}
+
+.pollutant-name {
+  color: #dbe8dc;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.pollutant-name small {
+  display: block;
+  margin-top: 0.2rem;
+  color: var(--muted);
+  font-size: 0.6rem;
+  font-weight: 400;
+}
+
+.pollutant-value {
+  margin-top: 0.5rem;
+  color: var(--text);
+  font: 600 1.6rem "Space Grotesk", sans-serif;
+  letter-spacing: -0.05em;
+}
+
+.pollutant-unit {
+  color: var(--muted);
+  font-size: 0.61rem;
+}
+
+.sparkline {
+  display: block;
+  width: 100%;
+  height: 29px;
+  margin-top: 9px;
+}
+
+.sparkline polyline {
+  filter: drop-shadow(0 0 3px currentColor);
+}
+
+.sparkline-caption {
+  color: var(--soft);
+  font-size: 0.57rem;
+}
+
+/* =========================================================
+   FORECAST, CITY CARDS, RESULTS AND STEPS
+   ========================================================= */
+
+.forecast-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 10px;
+  margin: 1rem 0;
+}
+
+.fc-card {
+  min-width: 0;
+  padding: 0.95rem 0.6rem;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  background: linear-gradient(
+    155deg,
+    rgba(21, 39, 32, 0.98),
+    rgba(10, 20, 17, 0.98)
+  );
+  text-align: center;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease;
+  animation: as-rise-in 0.55s ease both;
+}
+
+.fc-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--line-strong);
+}
+
+.fc-day {
+  color: var(--muted);
+  font-size: 0.65rem;
+}
+
+.fc-aqi {
+  margin: 0.4rem 0;
+  font: 600 1.8rem "Space Grotesk", sans-serif;
+  letter-spacing: -0.05em;
+}
+
+.fc-meta {
+  margin-top: 0.4rem;
+  color: var(--muted);
+  font-size: 0.65rem;
+}
+
+.fc-card .aqi-badge {
+  font-size: 0.58rem;
+}
+
+.city-card {
+  padding: 1.15rem;
+  border: 1px solid var(--line);
+  border-radius: 15px;
+  background: linear-gradient(
+    150deg,
+    rgba(19, 37, 30, 0.97),
+    rgba(10, 20, 17, 0.98)
+  );
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.city-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--line-strong);
+}
+
+.city-card h4 {
+  margin: 0 !important;
+  color: var(--text);
+  font-size: 1.2rem !important;
+}
+
+.city-aqi {
+  margin: 0.5rem 0;
+  font: 600 3rem "Space Grotesk", sans-serif;
+}
+
+.pgrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 7px;
+  margin-top: 1rem;
+}
+
+.pcell {
+  padding: 0.5rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--bg);
+}
+
+.pcell small {
+  display: block;
+  color: var(--muted);
+  font-size: 0.63rem;
+}
+
+.pcell b {
+  color: var(--text);
+  font-size: 0.85rem;
+}
+
+.advice {
+  margin-top: 1rem;
+  padding: 0.8rem 0 0;
+  border: 0;
+  border-top: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.77rem;
+}
+
+.result-card {
+  padding: 1.2rem;
+  border: 1px solid rgba(183, 239, 114, 0.18);
+  border-radius: 16px;
+  background: linear-gradient(
+    135deg,
+    rgba(19, 48, 37, 0.98),
+    rgba(10, 22, 18, 0.98)
+  );
+}
+
+.result-eyebrow {
+  color: var(--sky);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+}
+
+.result-title {
+  margin: 0.5rem 0;
+  color: var(--text);
+  font: 600 1.8rem "Space Grotesk", sans-serif;
+  overflow-wrap: anywhere;
+}
+
+.result-pill {
+  padding: 0.3rem 0.6rem;
+  border: 1px solid rgba(183, 239, 114, 0.2);
+  border-radius: 999px;
+  background: rgba(183, 239, 114, 0.12);
+  color: #d9f8ad;
+  font-size: 0.77rem;
+}
+
+.result-desc {
+  margin-top: 1rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.step {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 0.6rem;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(15, 29, 24, 0.86);
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.step:hover {
+  transform: translateY(-2px);
+  border-color: var(--line-strong);
+}
+
+.step-n {
+  display: grid;
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  place-items: center;
+  border-radius: 6px;
+  background: rgba(183, 239, 114, 0.12);
+  color: #c5f38b;
+  font-size: 0.8rem;
+}
+
+.step b {
+  color: var(--text);
+  font-size: 0.85rem;
+}
+
+.step div div {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.trust-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
+.trust-row b {
+  display: block;
+  margin-bottom: 0.3rem;
+  color: var(--text);
+  font-size: 0.8rem;
+}
+
+.observatory-trust {
+  padding: 1.2rem;
+  border: 1px solid #244238;
+  background: #0b1e18;
+}
+
+/* =========================================================
+   STREAMLIT WIDGETS, CHARTS AND TABLES
+   ========================================================= */
+
+[data-testid="stVerticalBlockBorderWrapper"] > div {
+  border-color: var(--line) !important;
+  border-radius: var(--radius) !important;
+  background: rgba(11, 23, 19, 0.35);
+}
+
+[data-testid="stMetric"] {
+  padding: 0.8rem;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  background: linear-gradient(
+    145deg,
+    rgba(20, 38, 31, 0.95),
+    rgba(10, 20, 17, 0.95)
+  );
+}
+
+[data-testid="stMetricValue"] {
+  color: var(--text);
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.8rem;
+}
+
+[data-testid="stExpander"] {
+  border-color: var(--line) !important;
+  border-radius: 12px !important;
+  background: var(--card);
+}
+
+[data-testid="stPlotlyChart"],
+[data-testid="stIFrame"],
+[data-testid="stDataFrame"] {
+  overflow: hidden;
+  border: 1px solid rgba(163, 190, 174, 0.12);
+  border-radius: 14px;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+  animation: as-rise-in 0.7s 0.08s ease both;
+}
+
+[data-testid="stPlotlyChart"]:hover {
+  border-color: rgba(183, 239, 114, 0.24);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.18);
+}
+
+[data-testid="stSelectbox"] [data-baseweb="select"] > div,
+[data-testid="stTextInput"] input,
+[data-testid="stNumberInput"] input {
+  border-color: #29493b !important;
+  border-radius: 8px;
+  background: #0d211b !important;
+}
+
+[data-testid="stBaseButton-primary"] {
+  border: 0 !important;
+  background: var(--sky) !important;
+  color: #071612 !important;
+  font-weight: 700 !important;
+}
+
+[data-testid="stBaseButton-secondary"] {
+  border-color: var(--line-strong) !important;
+  color: var(--text) !important;
+}
+
+[data-testid="stButton"] button,
+[data-testid="stDownloadButton"] button {
+  min-height: 2.6rem;
+  border-radius: 9px;
+  font-weight: 600;
+  transition:
+    transform 0.2s ease,
+    filter 0.2s ease,
+    border-color 0.2s ease;
+}
+
+[data-testid="stButton"] button:hover,
+[data-testid="stDownloadButton"] button:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+  border-color: var(--line-strong);
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--sky) !important;
+  outline-offset: 3px;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  margin: 0.5rem 0;
+}
+
+.legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--muted);
+  font-size: 0.65rem;
+}
+
+.legend i {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 2px;
+}
+
+.app-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.6rem;
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+  color: var(--soft);
+  font-size: 0.67rem;
+}
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes as-rise-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes as-globe-float {
+  0%,
+  100% {
+    translate: 0 0;
+    filter: saturate(0.95);
+  }
+  50% {
+    translate: 0 -8px;
+    filter: saturate(1.12);
+  }
+}
+
+@keyframes as-orbit {
+  from {
+    rotate: 0deg;
+  }
+  to {
+    rotate: 360deg;
+  }
+}
+
+@keyframes as-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(183, 239, 114, 0);
+  }
+  50% {
+    box-shadow: 0 0 0 7px rgba(183, 239, 114, 0.08);
+  }
+}
+
+.live-indicator {
+  animation: as-pulse 2.4s ease-in-out infinite;
+}
+
+.reveal-card {
+  animation: as-rise-in 0.55s cubic-bezier(0.2, 0.75, 0.25, 1) both;
+  animation-delay: var(--reveal-delay, 0ms);
+}
+
+/* =========================================================
+   RESPONSIVE LAYOUT
+   ========================================================= */
+
+@media (max-width: 1200px) {
+  .pollutant-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .forecast-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .kpi-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .observatory-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .observatory-outlook {
+    min-height: 260px;
+  }
+
+  .signal-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .signal-item:nth-child(2) {
+    border-right: 0;
+  }
+
+  .signal-item:nth-child(-n + 2) {
+    border-bottom: 1px solid #244238;
+  }
+
+  .observatory-section-head {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .section-aside {
+    text-align: left;
+  }
+
+  .trust-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .block-container {
+    padding: 3.7rem 0.9rem 2rem !important;
+  }
+
+  .hero {
+    padding-bottom: 1rem;
+  }
+
+  .hero h1 {
+    font-size: 1.8rem !important;
+  }
+
+  .hero .lead {
+    font-size: 0.8rem;
+  }
+
+  .hero::after {
+    right: -40px;
+    width: 150px;
+    opacity: 0.25;
+  }
+
+  .hero::before {
+    right: -58px;
+    width: 190px;
+    opacity: 0.22;
+  }
+
+  .summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .kpi-grid,
+  .pollutant-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+  }
+
+  .forecast-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .kpi {
+    padding: 0.9rem;
+  }
+
+  .kpi-value {
+    font-size: 1.35rem;
+  }
+
+  .aqi-panel,
+  .outlook-panel {
+    padding: 1rem;
+  }
+
+  .aqi-number {
+    font-size: 3rem;
+  }
+
+  .fc-card {
+    padding: 0.8rem 0.35rem;
+  }
+
+  .pgrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .trust-row {
+    grid-template-columns: 1fr;
+  }
+
+  [data-testid="stPlotlyChart"] .modebar-container {
+    display: none !important;
+  }
+
+  [data-testid="stHorizontalBlock"] {
+    flex-wrap: wrap;
+  }
+
+  [data-testid="stHorizontalBlock"] > [data-testid="stColumn"] {
+    flex: 1 1 100% !important;
+    min-width: 0 !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .observatory-score {
+    font-size: 5rem;
+  }
+
+  .signal-item {
+    padding: 0.9rem;
+  }
+
+  .signal-item strong {
+    font-size: 1.35rem;
+  }
+
+  .observatory-section-head > div {
+    gap: 0.5rem;
+  }
+}
+
+/* Respect operating-system accessibility settings */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .hero::before,
+  .hero::after {
+    animation: none !important;
+  }
+
+  .kpi:hover,
+  .pollutant:hover,
+  .fc-card:hover,
+  .city-card:hover,
+  .step:hover,
+  [data-testid="stPlotlyChart"]:hover {
+    transform: none !important;
+  }
+}
+
+
+/* =========================================================
+   AIRSCOPE CINEMATIC 3D REDESIGN — reference-inspired overrides
+   ========================================================= */
+:root {
+  --bg: #03111b;
+  --card: rgba(6, 27, 41, 0.94);
+  --card-strong: #092432;
+  --line: rgba(53, 145, 169, 0.28);
+  --line-strong: rgba(53, 232, 224, 0.62);
+  --text: #eaf6ff;
+  --muted: #9bb8c8;
+  --soft: #7899ad;
+  --sky: #8dff9e;
+  --mint: #35e8e0;
+  --radius: 18px;
+  --shadow: 0 18px 54px rgba(0, 0, 0, 0.28);
+}
+html, body, [data-testid="stAppViewContainer"] {
+  background:
+    radial-gradient(ellipse at 72% -8%, rgba(12, 94, 112, .24), transparent 36rem),
+    radial-gradient(ellipse at 0% 35%, rgba(23, 116, 105, .12), transparent 34rem),
+    #03111b !important;
+}
+[data-testid="stHeader"] { background: rgba(3, 17, 27, .88) !important; }
+[data-testid="stSidebar"] {
+  background: linear-gradient(180deg, #041722 0%, #03111b 100%) !important;
+}
+.hero {
+  min-height: 230px;
+  padding: clamp(1.2rem, 2.4vw, 2rem) 0 1.6rem;
+  border-bottom-color: rgba(53, 232, 224, .22);
+}
+.hero h1 {
+  max-width: 760px;
+  padding-right: clamp(110px, 20vw, 250px);
+  text-wrap: balance;
+  text-shadow: 0 0 35px rgba(53, 232, 224, .08);
+}
+.hero .lead { max-width: 650px; padding-right: clamp(90px, 18vw, 220px); }
+.hero::after {
+  width: clamp(138px, 17vw, 218px);
+  background:
+    radial-gradient(ellipse at 31% 25%, rgba(190,255,242,.95), rgba(53,232,224,.75) 8%, transparent 27%),
+    repeating-linear-gradient(0deg, transparent 0 17px, rgba(107,245,224,.22) 18px 19px),
+    repeating-linear-gradient(90deg, transparent 0 21px, rgba(107,245,224,.20) 22px 23px),
+    radial-gradient(circle at 36% 34%, #167e8a 0, #0b4b66 43%, #061b36 72%, #020913 100%);
+  box-shadow: inset -24px -16px 34px rgba(0,0,0,.68), inset 10px 8px 24px rgba(173,255,239,.2), 0 0 34px rgba(46,226,210,.3), 0 0 90px rgba(32,167,210,.15);
+}
+.hero::before {
+  border-color: rgba(53,232,224,.55);
+  box-shadow: 0 0 28px rgba(38,224,210,.12), 0 0 0 14px rgba(53,232,224,.025);
+}
+.kpi, .pollutant, .fc-card, .city-card, .aqi-panel, .outlook-panel {
+  background: linear-gradient(145deg, rgba(8, 32, 45, .98), rgba(4, 20, 31, .98));
+  border-color: rgba(53, 145, 169, .25);
+  box-shadow: 0 14px 40px rgba(0,0,0,.20);
+  backdrop-filter: blur(14px);
+}
+.kpi::after {
+  background: linear-gradient(90deg, transparent, rgba(53,232,224,.72), transparent);
+}
+.kpi:hover, .pollutant:hover, .fc-card:hover, .city-card:hover {
+  border-color: rgba(53,232,224,.62);
+  box-shadow: 0 20px 48px rgba(0,0,0,.28), 0 0 24px rgba(53,232,224,.06);
+}
+.kpi-value, .pollutant-value, .fc-aqi, .city-aqi, .aqi-number {
+  text-shadow: 0 0 24px rgba(53,232,224,.09);
+}
+.brand-mark { border-color: var(--mint); background: var(--mint); box-shadow: 0 0 28px rgba(53,232,224,.16); }
+.status-dot, .live-indicator { background: var(--sky); box-shadow: 0 0 0 4px rgba(141,255,158,.1), 0 0 15px rgba(141,255,158,.35); }
+.signal-strip { background: linear-gradient(135deg, #082433, #041722); border-color: var(--line); }
+.signal-item { border-color: var(--line); }
+.signal-item:hover { background: rgba(53,232,224,.055); }
+.pcell { background: rgba(3,17,27,.72); }
+button, [data-testid="stButton"] button {
+  transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+}
+[data-testid="stButton"] button:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(53,232,224,.12); }
+[data-testid="stPlotlyChart"] { border-radius: 16px; }
+.reveal-card { animation: as-rise-in .65s cubic-bezier(.2,.75,.25,1) both; }
+@keyframes as-neon-breathe {
+  0%,100% { box-shadow: 0 0 18px rgba(53,232,224,.08); }
+  50% { box-shadow: 0 0 32px rgba(53,232,224,.16); }
+}
+@media (max-width: 900px) {
+  .hero { min-height: 200px; }
+  .hero h1, .hero .lead { padding-right: clamp(85px, 22vw, 150px); }
+  .hero::before { right: -20px; width: clamp(125px, 22vw, 170px); }
+  .hero::after { right: -6px; width: clamp(108px, 18vw, 145px); }
+}
+@media (max-width: 620px) {
+  .hero { min-height: 0; padding-bottom: 1.2rem; }
+  .hero h1 { padding-right: 0; font-size: clamp(2rem, 8vw, 2.7rem) !important; }
+  .hero .lead { padding-right: 0; max-width: 100%; }
+  .hero::before, .hero::after { display: none; }
+  .kpi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+  .pollutant-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .forecast-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}
+
+.hero-signal { display:flex; flex-wrap:wrap; gap:8px; margin-top:1rem; position:relative; z-index:2; }
+.hero-signal span { border:1px solid rgba(53,232,224,.22); border-radius:999px; padding:.32rem .62rem; color:#9bb8c8; background:rgba(4,23,34,.72); font-size:.58rem; font-weight:700; letter-spacing:.11em; backdrop-filter:blur(8px); }
+.hero-signal span:first-child { color:#8dff9e; border-color:rgba(141,255,158,.28); }
+@media(max-width:620px) { .hero-signal { max-width:100%; } }
+
+
+/* =========================================================
+   CINEMATIC OBSERVATORY — visual layer for the real dashboard
+   ========================================================= */
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 330px;
+  padding: clamp(1.6rem, 3vw, 2.6rem) !important;
+  border: 1px solid rgba(69, 224, 224, .22);
+  border-radius: 20px;
+  background:
+    linear-gradient(90deg, rgba(3, 13, 27, .98) 0%, rgba(3, 17, 31, .92) 38%, rgba(3, 17, 31, .26) 72%, rgba(3, 13, 27, .42) 100%),
+    url("https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?auto=format&fit=crop&w=1800&q=90") 70% 48% / cover no-repeat,
+    #061323 !important;
+  box-shadow: inset 0 0 70px rgba(0, 204, 255, .08), 0 22px 65px rgba(0, 0, 0, .22);
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  right: 14%;
+  top: 50%;
+  width: clamp(190px, 28vw, 370px);
+  aspect-ratio: 1;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background: url("https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?auto=format&fit=crop&w=900&q=90") center / cover no-repeat;
+  box-shadow: 0 0 34px rgba(35, 218, 255, .3), 0 0 110px rgba(0, 137, 255, .19), inset -35px -15px 55px rgba(0, 0, 0, .45);
+  animation: earth-drift 16s ease-in-out infinite;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  right: calc(14% - 23px);
+  top: 50%;
+  width: clamp(220px, 31vw, 420px);
+  aspect-ratio: 1;
+  transform: translateY(-50%) rotate(-18deg);
+  border: 1px solid rgba(65, 229, 255, .45);
+  border-radius: 50%;
+  box-shadow: 0 0 22px rgba(0, 205, 255, .12);
+  animation: orbit-spin 28s linear infinite;
+}
+.hero > * { position: relative; z-index: 2; }
+.hero h1 { max-width: 650px; text-wrap: balance; text-shadow: 0 3px 28px rgba(0, 0, 0, .32); }
+.hero .lead { max-width: 610px; color: #c1d4e2 !important; }
+.hero .eyebrow { color: #7ef5c6 !important; }
+.hero-signal span { transition: transform .25s ease, border-color .25s ease, background .25s ease; }
+.hero-signal span:hover { transform: translateY(-3px); border-color: rgba(92, 243, 255, .65); background: rgba(8, 57, 73, .9); }
+.context-bar { backdrop-filter: blur(16px); }
+.kpi, .pollutant, .fc-card, .city-card, .aqi-panel, .outlook-panel {
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(14px);
+  transition: transform .24s ease, border-color .24s ease, box-shadow .24s ease;
+}
+.kpi::before, .city-card::before, .fc-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(89, 240, 229, .55), transparent);
+  opacity: .65;
+}
+.kpi:hover, .pollutant:hover, .fc-card:hover, .city-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(86, 228, 230, .4);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, .2), 0 0 25px rgba(14, 196, 204, .07);
+}
+[data-testid="stPlotlyChart"] { border-radius: 14px; overflow: hidden; }
+[data-testid="stPlotlyChart"] > div { transition: filter .25s ease; }
+[data-testid="stPlotlyChart"]:hover > div { filter: saturate(1.12); }
+[data-testid="stButton"] button, [data-testid="stDownloadButton"] button {
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+[data-testid="stButton"] button:hover, [data-testid="stDownloadButton"] button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(32, 212, 196, .13);
+}
+@keyframes earth-drift {
+  0%, 100% { margin-top: 0; filter: saturate(1); }
+  50% { margin-top: -9px; filter: saturate(1.12); }
+}
+@keyframes orbit-spin { from { rotate: 0deg; } to { rotate: 360deg; } }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
+}
+@media (max-width: 760px) {
+  .hero { min-height: 280px; background-position: 62% center; }
+  .hero::before { right: -3%; width: 180px; opacity: .52; }
+  .hero::after { right: -7%; width: 205px; opacity: .55; }
+  .hero h1, .hero .lead { padding-right: 0 !important; }
+}
+
+
+/* =========================================================
+   PAGE WORLDS — each AeroVista AI category gets its own visual identity
+   ========================================================= */
+.page-hero {
+  min-height: 310px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-size: cover, cover, cover !important;
+  background-position: center, center, center !important;
+  transition: background-position .6s ease, border-color .35s ease;
+}
+.page-hero::after {
+  width: clamp(170px, 24vw, 310px);
+  right: 6%;
+  border-color: rgba(75, 238, 244, .5);
+  box-shadow: 0 0 30px rgba(44, 220, 245, .18), inset 0 0 30px rgba(44, 220, 245, .08);
+}
+.page-hero::before {
+  right: 8%;
+  width: clamp(150px, 21vw, 265px);
+}
+.page-hero h1 { max-width: 700px; animation: as-title-arrive .8s cubic-bezier(.2,.8,.2,1) both; }
+.page-hero .eyebrow { animation: as-title-arrive .55s ease both; }
+.page-hero .lead { animation: as-title-arrive .9s .08s ease both; }
+.page-hero .hero-signal { animation: as-title-arrive 1s .14s ease both; }
+.page-hero[data-view="geospatial-view"] {
+  background:
+    linear-gradient(90deg, rgba(2,13,27,.98) 0%, rgba(2,13,27,.83) 48%, rgba(2,13,27,.28) 100%),
+    url("https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1800&q=85") center 45% / cover no-repeat,
+    #03111b !important;
+}
+.page-hero[data-view="future-predicted-view"] {
+  background:
+    linear-gradient(90deg, rgba(3,12,29,.98) 0%, rgba(3,12,29,.82) 48%, rgba(3,12,29,.25) 100%),
+    url("https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=1800&q=85") center 50% / cover no-repeat,
+    #03111b !important;
+}
+.page-hero[data-view*="pattern"], .page-hero[data-view*="cluster"] {
+  background:
+    linear-gradient(90deg, rgba(3,14,28,.98) 0%, rgba(3,14,28,.82) 48%, rgba(3,14,28,.25) 100%),
+    url("https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1800&q=85") center / cover no-repeat,
+    #03111b !important;
+}
+.page-hero[data-view*="method"], .page-hero[data-view*="model"] {
+  background:
+    linear-gradient(90deg, rgba(3,14,28,.98) 0%, rgba(3,14,28,.82) 48%, rgba(3,14,28,.25) 100%),
+    url("https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1800&q=85") center / cover no-repeat,
+    #03111b !important;
+}
+@keyframes as-title-arrive {
+  from { opacity: 0; transform: translate3d(0, 13px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+/* richer image-led section headers, while leaving all measurements and ML outputs intact */
+.observatory-section-head {
+  margin-top: 2.2rem;
+  padding: 1.1rem 1.2rem;
+  border: 1px solid rgba(53,232,224,.16);
+  border-radius: 14px;
+  background: linear-gradient(100deg, rgba(8,40,54,.78), rgba(3,17,27,.32));
+  box-shadow: inset 3px 0 0 rgba(53,232,224,.55);
+}
+.observatory-section-head h2 { letter-spacing: -.035em; }
+.observatory-hero {
+  border: 1px solid rgba(53,232,224,.2);
+  box-shadow: 0 22px 70px rgba(0,0,0,.24), inset 0 0 70px rgba(53,232,224,.035);
+  animation: as-title-arrive .75s ease both;
+}
+.observatory-outlook { position: relative; overflow: hidden; }
+.observatory-outlook::after {
+  content: "";
+  position: absolute; width: 190px; height: 190px; right: -90px; bottom: -100px;
+  border-radius: 50%; border: 1px solid rgba(53,232,224,.26);
+  box-shadow: 0 0 0 18px rgba(53,232,224,.025), 0 0 0 38px rgba(53,232,224,.02);
+  pointer-events: none;
+}
+.signal-item { transition: background .25s ease, transform .25s ease; }
+.signal-item:hover { transform: translateY(-2px); }
+@media(max-width:760px) {
+  .page-hero { min-height: 260px; }
+  .page-hero::before, .page-hero::after { opacity: .24; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .page-hero h1, .page-hero .eyebrow, .page-hero .lead, .page-hero .hero-signal,
+  .observatory-hero { animation: none !important; }
+}
+
+
+
+/* =========================================================
+   AIRSCOPE PAGE WORLDS — four distinct layouts and motion systems
+   ========================================================= */
+.as-page-marker { width:0; height:0; overflow:hidden; }
+@keyframes as-world-arrive { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+@keyframes as-map-sweep { 0% { transform:translateX(-140%); opacity:0; } 20% { opacity:.65; } 100% { transform:translateX(440%); opacity:0; } }
+@keyframes as-lab-draw { from { clip-path:inset(0 100% 0 0); } to { clip-path:inset(0 0 0 0); } }
+@keyframes as-discovery-pulse { 0%,100% { border-color:rgba(183,239,114,.18); } 50% { border-color:rgba(183,239,114,.52); } }
+
+/* OVERVIEW — editorial observatory: oversized reading and contrasting forecast rail. */
+body:has(.as-overview) .observatory-hero {
+  grid-template-columns:minmax(0,1.65fr) minmax(250px,.7fr); min-height:360px;
+  border-radius:4px 32px 4px 32px; border-color:rgba(183,239,114,.3);
+  background:radial-gradient(ellipse at 12% 0%,rgba(85,148,103,.24),transparent 52%),linear-gradient(125deg,#10271e,#091914 72%);
+  animation:as-world-arrive .7s cubic-bezier(.2,.7,.2,1) both;
+}
+body:has(.as-overview) .observatory-copy { padding:clamp(1.5rem,4vw,4rem); }
+body:has(.as-overview) .observatory-score { font-size:clamp(5.8rem,11vw,10rem); }
+body:has(.as-overview) .observatory-outlook { justify-content:flex-end; min-height:100%; background:linear-gradient(155deg,#c8ff8d,#9cdb64); }
+body:has(.as-overview) .signal-strip { border:0; border-top:1px solid rgba(183,239,114,.42); border-bottom:1px solid rgba(183,239,114,.18); background:rgba(10,25,18,.45); }
+body:has(.as-overview) .signal-item { padding:1.4rem 1.2rem; }
+body:has(.as-overview) .signal-item strong { font-size:clamp(1.4rem,2.6vw,2.2rem); }
+body:has(.as-overview) .observatory-section-head { animation:as-world-arrive .7s ease both; }
+
+/* MAP — geospatial command centre: cyan instrument panels and map-first canvas. */
+body:has(.as-map) .page-hero {
+  position:relative; padding:1.4rem 1.6rem; margin:.7rem 0 1.3rem;
+  border:1px solid rgba(71,196,220,.3); border-radius:4px 4px 22px 4px;
+  background:linear-gradient(110deg,rgba(6,24,36,.98),rgba(6,17,27,.78));
+  animation:as-world-arrive .55s ease both;
+}
+body:has(.as-map) .page-hero:before { content:""; position:absolute; inset:0 auto 0 0; width:3px; background:#4bd9e8; box-shadow:0 0 22px rgba(75,217,232,.6); }
+body:has(.as-map) [data-testid="stSelectbox"], body:has(.as-map) [data-testid="stSegmentedControl"], body:has(.as-map) [data-testid="stSlider"] {
+  padding:.65rem .75rem; border:1px solid rgba(71,196,220,.22); border-radius:8px; background:rgba(7,23,34,.72);
+}
+body:has(.as-map) .city-card { border-radius:5px 18px 5px 5px; border-color:rgba(71,196,220,.32); background:linear-gradient(160deg,#092230,#07121d); }
+body:has(.as-map) [data-testid="stPlotlyChart"] { position:relative; overflow:hidden; border:1px solid rgba(71,196,220,.22); border-radius:4px 18px 4px 4px; background:rgba(5,17,28,.5); }
+body:has(.as-map) [data-testid="stPlotlyChart"]:after { content:""; position:absolute; top:0; bottom:0; left:0; width:18%; pointer-events:none; background:linear-gradient(90deg,transparent,rgba(71,196,220,.1),transparent); animation:as-map-sweep 8s ease-in-out infinite; }
+
+/* FORECAST — prediction lab: violet technical stage and time-horizon rhythm. */
+body:has(.as-forecast) .page-hero {
+  position:relative; padding:1.6rem 1.8rem; margin:.7rem 0 1.3rem; overflow:hidden;
+  border:1px solid rgba(167,139,250,.32); border-radius:18px 4px 18px 4px;
+  background:radial-gradient(ellipse at 95% 15%,rgba(124,90,210,.2),transparent 42%),linear-gradient(120deg,#10142b,#07111d);
+  animation:as-world-arrive .7s cubic-bezier(.16,.8,.25,1) both;
+}
+body:has(.as-forecast) .page-hero:after { content:"HISTORICAL  /  NOW  /  OUTLOOK"; display:block; margin-top:1rem; color:rgba(191,178,255,.7); font:600 .62rem "Space Grotesk",sans-serif; letter-spacing:.17em; }
+body:has(.as-forecast) [data-testid="stPlotlyChart"] { padding:.5rem; border:1px solid rgba(167,139,250,.24); border-radius:16px 4px 16px 4px; background:linear-gradient(145deg,rgba(18,21,44,.68),rgba(7,17,29,.3)); animation:as-lab-draw .9s ease both; }
+body:has(.as-forecast) [data-testid="stSlider"], body:has(.as-forecast) [data-testid="stSelectbox"], body:has(.as-forecast) [data-testid="stSegmentedControl"] { padding:.6rem .75rem; border-bottom:1px solid rgba(167,139,250,.36); background:rgba(17,20,42,.45); }
+body:has(.as-forecast) .fc-card { border-radius:4px 12px 4px 12px; border-top:2px solid rgba(167,139,250,.58); background:linear-gradient(180deg,rgba(32,28,61,.9),rgba(10,19,31,.96)); }
+body:has(.as-forecast) .fc-card:nth-child(even) { transform:translateY(5px); }
+body:has(.as-forecast) .fc-card:hover { transform:translateY(-3px); }
+
+/* PATTERNS — discovery studio: grid-backed research canvas and sharp geometry. */
+body:has(.as-patterns) .page-hero {
+  padding:1.8rem 2rem; margin:.7rem 0 1.4rem; border:1px dashed rgba(183,239,114,.38); border-radius:2px;
+  background:radial-gradient(circle at 82% 45%,rgba(167,139,250,.17),transparent 25%),radial-gradient(circle at 96% 15%,rgba(183,239,114,.13),transparent 30%),#0b1715;
+  animation:as-world-arrive .65s steps(10,end) both;
+}
+body:has(.as-patterns) .page-hero:after { content:"FEATURE SPACE  ·  CLUSTERS  ·  CORRELATIONS"; display:block; margin-top:1rem; color:rgba(183,239,114,.68); font:600 .61rem "Space Grotesk",sans-serif; letter-spacing:.15em; }
+body:has(.as-patterns) .kpi-grid { grid-template-columns:1.2fr 1fr 1fr 1fr; gap:8px; }
+body:has(.as-patterns) .kpi { border-radius:2px; border-color:rgba(183,239,114,.22); box-shadow:none; background:linear-gradient(135deg,rgba(23,36,31,.96),rgba(11,18,24,.96)); animation:as-discovery-pulse 6s ease-in-out infinite; }
+body:has(.as-patterns) .kpi:nth-child(2) { border-top:2px solid #a78bfa; }
+body:has(.as-patterns) .kpi:nth-child(3) { border-top:2px solid #67e8f9; }
+body:has(.as-patterns) .kpi:nth-child(4) { border-top:2px solid #b7ef72; }
+body:has(.as-patterns) [data-testid="stPlotlyChart"] {
+  border:1px solid rgba(183,239,114,.22); border-radius:2px;
+  background:linear-gradient(rgba(183,239,114,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(183,239,114,.025) 1px,transparent 1px),rgba(8,18,16,.55);
+  background-size:28px 28px;
+}
+body:has(.as-patterns) [data-testid="stSelectbox"], body:has(.as-patterns) [data-testid="stSegmentedControl"], body:has(.as-patterns) [data-testid="stSlider"] { padding:.65rem; border:1px solid rgba(183,239,114,.2); border-radius:2px; }
+
+@media (max-width:850px) {
+  body:has(.as-overview) .observatory-hero { grid-template-columns:1fr; }
+  body:has(.as-overview) .observatory-copy { padding:1.4rem; }
+  body:has(.as-patterns) .kpi-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  body:has(.as-forecast) .fc-card:nth-child(even) { transform:none; }
+}
+@media (prefers-reduced-motion:reduce) {
+  body:has(.as-overview) *, body:has(.as-map) *, body:has(.as-forecast) *, body:has(.as-patterns) * {
+    animation-duration:.01ms !important; animation-iteration-count:1 !important; scroll-behavior:auto !important; transition-duration:.01ms !important;
+  }
+}
+
+
+/* Remove the decorative spinning cyan grid-globe/orbit from the dashboard hero. */
+.hero::before,
+.hero::after {
+  content: none !important;
+  display: none !important;
+  animation: none !important;
+}
+
+
+
+/* PERFORMANCE PASS — preserve the cinematic look while avoiding continuous paint work */
+:root { scroll-behavior: auto; }
+
+/* Keep motion on page entrances, not on every frame while the user scrolls. */
+body:has(.as-map) [data-testid="stPlotlyChart"]::after { content: none !important; animation: none !important; }
+body:has(.as-forecast) [data-testid="stPlotlyChart"] { animation: none !important; }
+body:has(.as-patterns) .kpi { animation: as-world-arrive .45s ease both !important; }
+body:has(.as-patterns) .kpi:nth-child(2),
+body:has(.as-patterns) .kpi:nth-child(3),
+body:has(.as-patterns) .kpi:nth-child(4) { animation-delay: 0s !important; }
+
+/* Avoid expensive hover transforms/shadows on dense chart and data surfaces. */
+[data-testid="stPlotlyChart"],
+[data-testid="stDataFrame"],
+[data-testid="stTable"] { contain: layout paint; }
+[data-testid="stPlotlyChart"]::before,
+[data-testid="stPlotlyChart"]::after { pointer-events: none; }
+.kpi, .pollutant, .fc-card, .city-card, .signal-item {
+  transition: border-color .16s ease, background-color .16s ease !important;
+}
+.kpi:hover, .pollutant:hover, .fc-card:hover, .city-card:hover, .signal-item:hover {
+  transform: none !important;
+  box-shadow: var(--shadow);
+}
+
+/* Keep the visual identity but stop perpetual animation work across long pages. */
+.observatory-section-head,
+.signal-strip,
+.kpi,
+.pollutant,
+.fc-card,
+.observatory-hero { animation-iteration-count: 1 !important; }
+body:has(.as-map) .page-hero,
+body:has(.as-forecast) .page-hero,
+body:has(.as-patterns) .page-hero { animation-iteration-count: 1 !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* AEROVISTA MOTION SYSTEM — cinematic entrances, restrained depth, and clear hierarchy. */
+:root { --av-motion-fast: 180ms; --av-motion-base: 420ms; --av-motion-slow: 760ms; --av-ease-out: cubic-bezier(.16,1,.3,1); --av-ease-spring: cubic-bezier(.2,.85,.25,1); }
+@keyframes av-page-arrive { from { opacity: 0; transform: translate3d(0,18px,0) scale(.992); filter: blur(5px); } to { opacity: 1; transform: translate3d(0,0,0) scale(1); filter: blur(0); } }
+@keyframes av-hero-arrive { 0% { opacity: 0; transform: translate3d(0,24px,0) scale(.985); clip-path: inset(0 0 12% 0 round 18px); } 65% { opacity: 1; } 100% { opacity: 1; transform: translate3d(0,0,0) scale(1); clip-path: inset(0 0 0 0 round 18px); } }
+@keyframes av-line-draw { from { opacity: 0; transform: scaleX(.78); transform-origin: left center; } to { opacity: 1; transform: scaleX(1); transform-origin: left center; } }
+@keyframes av-glow-breathe { 0%,100% { box-shadow: 0 0 0 rgba(125,224,180,0), inset 0 1px 0 rgba(255,255,255,.025); } 50% { box-shadow: 0 0 32px rgba(125,224,180,.07), inset 0 1px 0 rgba(255,255,255,.055); } }
+@keyframes av-signal-sweep { from { background-position: 180% 0; } to { background-position: -180% 0; } }
+@keyframes av-orbit-in { from { opacity: 0; transform: rotate(-8deg) scale(.92); } to { opacity: 1; transform: rotate(0) scale(1); } }
+/* Page transitions */
+.block-container { animation: av-page-arrive .62s var(--av-ease-out) both; }
+.page-hero { position: relative; isolation: isolate; overflow: hidden; animation: av-hero-arrive .82s var(--av-ease-out) both; }
+.page-hero::before { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: linear-gradient(105deg, transparent 0%, rgba(255,255,255,.035) 42%, rgba(183,239,114,.055) 50%, transparent 62%); background-size: 220% 100%; animation: av-signal-sweep 1.5s .2s ease-out both; }
+.page-hero h1, .page-hero h2 { animation: av-page-arrive .72s .08s var(--av-ease-out) both; }
+/* Staggered card reveals — one-shot animations keep long pages efficient. */
+.kpi, .pollutant, .fc-card, .city-card, .signal-item, .result-card, .step { animation: av-page-arrive .58s var(--av-ease-out) both; animation-delay: var(--reveal-delay, 0ms); }
+.kpi:nth-child(2), .pollutant:nth-child(2), .fc-card:nth-child(2) { animation-delay: 70ms; }
+.kpi:nth-child(3), .pollutant:nth-child(3), .fc-card:nth-child(3) { animation-delay: 120ms; }
+.kpi:nth-child(4), .pollutant:nth-child(4), .fc-card:nth-child(4) { animation-delay: 170ms; }
+.pollutant:nth-child(5), .fc-card:nth-child(5) { animation-delay: 220ms; }
+.pollutant:nth-child(6), .fc-card:nth-child(6) { animation-delay: 270ms; }
+/* A responsive pointer lift, never applied to dense charts or tables. */
+.kpi, .pollutant, .fc-card, .city-card, .signal-item, .result-card { transition: transform var(--av-motion-base) var(--av-ease-out), border-color var(--av-motion-fast) ease, background-color var(--av-motion-fast) ease, box-shadow var(--av-motion-base) ease !important; will-change: auto; }
+@media (hover:hover) and (pointer:fine) { .kpi:hover, .pollutant:hover, .fc-card:hover, .city-card:hover, .signal-item:hover, .result-card:hover { transform: translate3d(0,-4px,0) !important; border-color: rgba(183,239,114,.42) !important; box-shadow: 0 18px 44px rgba(0,0,0,.22), 0 0 26px rgba(125,224,180,.055) !important; } }
+/* Plotly surfaces enter smoothly without animating every data point or stealing pointer input. */
+[data-testid='stPlotlyChart'] { animation: av-page-arrive .68s .08s var(--av-ease-out) both; }
+[data-testid='stDataFrame'], [data-testid='stTable'] { animation: av-page-arrive .48s var(--av-ease-out) both; }
+/* Page-specific motion signatures */
+body:has(.as-overview) .observatory-hero { animation: av-hero-arrive .9s var(--av-ease-out) both; }
+body:has(.as-overview) .observatory-section-head { animation: av-line-draw .65s .12s var(--av-ease-out) both; }
+body:has(.as-map) .page-hero { animation-duration: .95s; }
+body:has(.as-map) [data-testid='stPlotlyChart'] { animation-name: av-orbit-in; animation-duration: .78s; }
+body:has(.as-forecast) .fc-card { animation-name: av-page-arrive; animation-duration: .64s; }
+body:has(.as-patterns) .kpi { animation-name: av-orbit-in; animation-duration: .62s; }
+/* Keep animations comfortable on touch devices and disable motion on request. */
+@media (max-width: 700px) { .block-container { animation-duration: .35s; } .page-hero, [data-testid='stPlotlyChart'] { animation-duration: .45s !important; } .kpi:hover, .pollutant:hover, .fc-card:hover, .city-card:hover { transform: none !important; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-delay: 0ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; transform: none !important; filter: none !important; } }
